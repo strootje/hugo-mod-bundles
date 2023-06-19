@@ -1,0 +1,20 @@
+{{- $element := (index . 1) -}}
+{{- $position := (index . 2) -}}
+
+{{- with $sources := (resources.Match (printf "styles/mod/bundle/_*_%s_%s.scss" $element $position)) -}}
+	{{- $opts := (dict
+		"enableSourceMap" hugo.IsProduction
+		"outputStyle" (cond hugo.IsProduction "compressed" "expanded"))
+	-}}
+
+	{{- $bundle := resources.Concat "bundle.scss" $sources -}}
+	{{- with $bundle | resources.ToCSS $opts | resources.PostCSS | fingerprint "sha512" | resources.PostProcess -}}
+		<link
+			rel="stylesheet"
+			href="{{- .RelPermalink -}}"
+			referrerpolicy="no-referrer"
+			crossorigin="use-credentials"
+			integrity="{{- .Data.Integrity -}}"
+		/>
+	{{- end -}}
+{{- end -}}
