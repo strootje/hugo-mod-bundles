@@ -15,8 +15,13 @@
 		"vars" $vars)
 	-}}
 
-	{{- $bundle := resources.Concat "bundle.scss" $sources -}}
-	{{- with $bundle | resources.ToCSS $opts | resources.PostCSS | fingerprint "sha512" | resources.PostProcess -}}
+	{{- $bundle := resources.Concat "bundle.scss" $sources | resources.ToCSS $opts -}}
+
+	{{- if hugo.IsProduction -}}
+		{{- $bundle = $bundle | resources.PostCSS -}}
+	{{- end -}}
+
+	{{- with $bundle | fingerprint "sha512" | resources.PostProcess -}}
 		<link
 			rel="stylesheet"
 			href="{{- .RelPermalink -}}"
