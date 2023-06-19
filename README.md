@@ -4,8 +4,20 @@
 
 This module automaticaly pulls `scss` and `ts` files from the assets directory.
 Use the following naming scheme's:
-- assets/styles/mod/bundles/_*_<head/body>_<start/end>.scss
-- assets/scripts/mod/bundles/_*_<head/body>_<start/end>.ts
+- assets/styles/bundle/\_*\_<head/body>_<start/end>.scss
+- assets/scripts/bundle/\_*\_<head/body>_<start/end>.ts
+- layouts/partials/bundle/\_\<key\>\_<head/body>_<start/end>.html
+
+For partials you have to add a `key` in the list `[[params.mod.bundles]]`.
+```toml
+[[params.mod.bundles]]
+key = "testing"
+
+# Will check
+# - partial "bundle/_testing_head_end" .
+# - partial "bundle/_testing_body_start" .
+# - partial "bundle/_testing_body_end" .
+```
 
 ```html
 <!DOCTYPE html>
