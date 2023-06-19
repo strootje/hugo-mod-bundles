@@ -1,0 +1,19 @@
+{{- $element := (index . 1) -}}
+{{- $position := (index . 2) -}}
+
+{{- with $sources := (resources.Match (printf "scripts/mod/bundle/_*_%s_%s.ts" $element $position)) -}}
+	{{- $opts := (dict
+		"minify" hugo.IsProduction
+		"sourceMap" (cond hugo.IsProduction "external" "inline"))
+	-}}
+
+	{{- $bundle := resources.Concat "bundle.ts" $sources -}}
+	{{- with $bundle | js.Build $opts | fingerprint "sha512" -}}
+		<script
+			src="{{- .RelPermalink -}}"
+			referrerpolicy="no-referrer"
+			crossorigin="use-credentials"
+			integrity="{{- .Data.Integrity -}}"
+		></script>
+	{{- end -}}
+{{- end -}}
