@@ -34,10 +34,10 @@ Use the following naming scheme's:
 - assets/scripts/bundle/\_*\_<head/body>_<start/end>.ts
 - layouts/partials/bundle/\_\<key\>\_<head/body>_<start/end>.html
 
-For partials you have to add a `key` in the list `[[params.mod.bundles]]`.
+For partials you have to add a `key` in the list `[params.mod.bundles]`.
 ```toml
-[[params.mod.bundles]]
-key = "testing"
+[params.mod.bundles]
+testing = true
 
 # Will check
 # - partial "bundle/_testing_head_end" .
@@ -49,6 +49,7 @@ key = "testing"
 
 The following hugo mods already use bundles:
 - [hugo-mod-forkawesome](https://git.strooweb.nl/strooware/hugo-mod-forkawesome)
+- [hugo-mod-leaflet](https://git.strooweb.nl/strooware/hugo-mod-leaflet)
 - [hugo-mod-marquee](https://git.strooweb.nl/strooware/hugo-mod-marquee)
 - [hugo-mod-salonized](https://git.strooweb.nl/strooware/hugo-mod-salonized)
 - [hugo-mod-stackcss](https://git.strooweb.nl/strooware/hugo-mod-stackcss)
