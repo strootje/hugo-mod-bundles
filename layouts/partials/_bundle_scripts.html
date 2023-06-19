@@ -1,7 +1,7 @@
 {{- $element := (index . 1) -}}
 {{- $position := (index . 2) -}}
 
-{{- with $sources := (resources.Match (printf "scripts/mod/bundle/_*_%s_%s.ts" $element $position)) -}}
+{{- with $sources := (resources.Match (printf "scripts/bundle/_*_%s_%s.ts" $element $position)) -}}
 	{{- $opts := (dict
 		"minify" hugo.IsProduction
 		"sourceMap" (cond hugo.IsProduction "external" "inline"))

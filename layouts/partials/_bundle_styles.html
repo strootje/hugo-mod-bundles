@@ -1,10 +1,18 @@
 {{- $element := (index . 1) -}}
 {{- $position := (index . 2) -}}
 
-{{- with $sources := (resources.Match (printf "styles/mod/bundle/_*_%s_%s.scss" $element $position)) -}}
+{{- with $sources := (resources.Match (printf "styles/bundle/_*_%s_%s.scss" $element $position)) -}}
+	{{- $vars := (dict) -}}
+
+	{{- $partialPath := printf "bundle/vars" -}}
+	{{- if templates.Exists (printf "partials/%s.html" $partialPath) -}}
+		{{- $vars = merge $vars (partial $partialPath .) -}}
+	{{- end -}}
+
 	{{- $opts := (dict
 		"enableSourceMap" hugo.IsProduction
-		"outputStyle" (cond hugo.IsProduction "compressed" "expanded"))
+		"outputStyle" (cond hugo.IsProduction "compressed" "expanded")
+		"vars" $vars)
 	-}}
 
 	{{- $bundle := resources.Concat "bundle.scss" $sources -}}

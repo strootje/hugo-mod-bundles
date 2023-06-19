@@ -1,0 +1,10 @@
+{{- $scope := (index . 0) -}}
+{{- $element := (index . 1) -}}
+{{- $position := (index . 2) -}}
+
+{{- range $key := $scope.Param "mods.bundles" -}}
+	{{- $partialPath := printf "bundle/_%s_%s_%s" $key.key $element $position -}}
+	{{- if templates.Exists (printf "partials/%s.html" $partialPath) -}}
+		{{- partial $partialPath $scope -}}
+	{{- end -}}
+{{- end -}}
