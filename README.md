@@ -6,7 +6,7 @@ Other modules can use this to easely load assets into certain hooks.
 ## Usage (website developer)
 
 ```bash
-$ hugo mod get -u git.strooweb.nl/strooware/hugo-mod-bundles
+$ hugo mod get -u git.strooware.nl/hugo-mod-bundles
 ```
 
 ```html
@@ -48,12 +48,12 @@ testing = true
 ## Examples
 
 The following hugo mods already use bundles:
-- [hugo-mod-forkawesome](https://git.strooweb.nl/strooware/hugo-mod-forkawesome)
-- [hugo-mod-leaflet](https://git.strooweb.nl/strooware/hugo-mod-leaflet)
-- [hugo-mod-marquee](https://git.strooweb.nl/strooware/hugo-mod-marquee)
-- [hugo-mod-salonized](https://git.strooweb.nl/strooware/hugo-mod-salonized)
-- [hugo-mod-stackcss](https://git.strooweb.nl/strooware/hugo-mod-stackcss)
+- [hugo-mod-forkawesome](https://git.strooware.nl/hugo-mod-forkawesome)
+- [hugo-mod-leaflet](https://git.strooware.nl/hugo-mod-leaflet)
+- [hugo-mod-marquee](https://git.strooware.nl/hugo-mod-marquee)
+- [hugo-mod-salonized](https://git.strooware.nl/hugo-mod-salonized)
+- [hugo-mod-stackcss](https://git.strooware.nl/hugo-mod-stackcss)
 
 And these site use the loading part:
-- [jodiestains.com](https://jodiestains.com) ([source](https://git.strooweb.nl/strooware/hugo-site-jodiestains))
-- [strootje.com](https://strootje.com) ([source](https://git.strooweb.nl/strooware/hugo-site-strootje))
+- [jodiestains.com](https://jodiestains.com) ([source](https://git.strooware.nl/hugo-site-jodiestains))
+- [strootje.com](https://strootje.com) ([source](https://git.strooware.nl/hugo-site-strootje))
